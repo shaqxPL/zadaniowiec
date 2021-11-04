@@ -42,6 +42,27 @@ public class Main {
 
 
 
+    public static void addProject(String project){
+        boolean hasPlaceForNewProject = projectsCount < projects.length;
+        if (hasPlaceForNewProject){
+            projects[projectsCount] = project;
+            projectsCount++;
+            System.out.println("Dodano nowy projekt " + project);
+        }else {
+            System.out.println("Nie udało się dodać " + project);
+        }
+    }
+    public static void removeProject(int indexProject){
+        boolean isProjectExist = indexProject < projectsCount;
+        if (isProjectExist){
+            for (int i = indexProject; i < projectsCount - 1; i++){
+                projects[i] = projects[i + 1];
+            }
+            projectsCount--;
+        }
+    }
+
+
 
 
 
