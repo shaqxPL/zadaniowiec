@@ -24,22 +24,33 @@ public class Main {
         if (hasPlaceForNewTask){
             tasks[tasksCount] = task;
             tasksCount++;
-            System.out.println("Dodano nowe zadanie " + task);
+            addLog("Dodano nowe zadanie " + task);
         }else {
-            System.out.println("Nie udało się dodać " + task);
+            addLog("Nie udało się dodać " + task);
         }
     }
 
     public static void removeTask(int indexTask){
         boolean isTaskExist = indexTask < tasksCount;
         if (isTaskExist){
+            addLog("Usunięto zadanie " + tasks[indexTask]);
             for (int i = indexTask; i < tasksCount - 1; i++){
                 tasks[i] = tasks[i + 1];
             }
             tasksCount--;
+        } else {
+            addLog("Nie usunięto zadania " + tasks[indexTask]);
         }
     }
 
+    public static void displayTasks(){
+        System.out.println("Lista zadań: ");
+        for (int i = 0; i < tasksCount; i++) {
+            System.out.println(tasks[i]);
+        }
+        addLog("Zadania wyświetlone.");
+    }
+//TODO dodaj display project.
 
 
     public static void addProject(String project){
@@ -47,20 +58,41 @@ public class Main {
         if (hasPlaceForNewProject){
             projects[projectsCount] = project;
             projectsCount++;
-            System.out.println("Dodano nowy projekt " + project);
+            addLog("Dodano nowy projekt " + project);
         }else {
-            System.out.println("Nie udało się dodać " + project);
+            addLog("Nie udało się dodać " + project);
         }
     }
     public static void removeProject(int indexProject){
         boolean isProjectExist = indexProject < projectsCount;
         if (isProjectExist){
+            addLog("Usunięto projekt + " + projects[indexProject]);
             for (int i = indexProject; i < projectsCount - 1; i++){
                 projects[i] = projects[i + 1];
             }
             projectsCount--;
+        }else{
+            addLog("Nie udało się usunąć projektu " + projects[indexProject]);
         }
     }
+
+    public static void addLog(String log){
+        boolean hasPlaceForNewLog = changeLogCount < changeLog.length;
+        if (hasPlaceForNewLog){
+            changeLog[changeLogCount] = log;
+            changeLogCount++;
+        }
+    }
+
+    public static void displayChangeLog() {
+        System.out.println("Lista logów: ");
+        for (int i = 0; i < changeLogCount; i++) {
+            System.out.println(changeLog[i]);
+        }
+        addLog("Logi wyświetlone.");
+    }
+
+
 
 
 
