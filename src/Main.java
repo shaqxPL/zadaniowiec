@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
 
     static String[] tasks = new String[10];
@@ -50,7 +52,14 @@ public class Main {
         }
         addLog("Zadania wyświetlone.");
     }
-//TODO dodaj display project.
+
+    public static void displayProject() {
+        System.out.println("Lista projektów: ");
+        for (int i = 0; i < projectsCount; i++) {
+            System.out.println(projects[i]);
+        }
+        addLog("Projekty wyświetlone.");
+    }
 
 
     public static void addProject(String project){
@@ -94,11 +103,60 @@ public class Main {
 
 
 
-
-
-
-
     public static void main(String[] args) {
+        Scanner userInput = new Scanner(System.in);
+        boolean isAppRun = true;
+        int choice;
+        while (isAppRun){
+            displayMenu();
+            System.out.println("Wybierz swoją opcje: ");
+            choice = userInput.nextInt();
 
+            switch (choice){
+                case 1:
+                    System.out.println("Podaj nazwę zadania które chcesz dodac: ");
+                    String task = userInput.next();
+                    addTask(task);
+                    break;
+
+                case 2:
+                    System.out.println("Podaj numer indeksu zadania do usunięcia: ");
+                    int indexTask = userInput.nextInt();
+                    removeTask(indexTask);
+                    break;
+
+                case 3:
+                    System.out.println("Podaj nazwę projektu który chcesz dodać: ");
+                    String project = userInput.next();
+                    addProject(project);
+                    break;
+
+                case 4:
+                    System.out.println("Podaj numer indeksu projektu do usunięcia: ");
+                    int indexProject = userInput.nextInt();
+                    removeProject(indexProject);
+                    break;
+
+                case 5:
+                    displayTasks();
+                    break;
+
+                case 6:
+                    displayProject();
+                    break;
+
+                case 7:
+                    displayChangeLog();
+                    break;
+
+                case 0:
+                    isAppRun = false;
+                    break;
+
+                default:
+                    System.out.println("Komenda nieznana, wybierz właściwą opcję ");
+                    break;
+            }
+        }
     }
 }
